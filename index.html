@@ -168,6 +168,29 @@ body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);
 .fi{opacity:0;transform:translateY(16px);transition:opacity 0.5s ease,transform 0.5s ease;}
 .fi.on{opacity:1;transform:translateY(0);}
 
+/* ── DESKTOP READABILITY PASS (>=768px) ── */
+@media(min-width:768px){
+  .hero-title{font-size:17px;line-height:1.55;}
+  .hero-about{font-size:15px;line-height:1.85;max-width:560px;}
+  .tag{font-size:11px;padding:6px 12px;}
+  .stat{padding:16px 14px;}
+  .stat-n{font-size:24px;}
+  .stat-l{font-size:10px;line-height:1.4;}
+  .hero-contact{font-size:13px;gap:12px;}
+  .hero-panel-title{font-size:11px;}
+  .hero-bar-top{font-size:12px;}
+  .hero-bar-yrs{font-size:11px;}
+
+  .sec-eyebrow{font-size:12px;}
+  .sec-heading{font-size:34px;}
+  .tl-legend-item{font-size:12px;}
+  .tl-hint{font-size:12px;}
+  .tc-role{font-size:15px;}
+  .tc-summary{font-size:14px;line-height:1.7;min-height:calc(1em * 1.7 * 4);}
+  .tc-toggle{font-size:12px;}
+  .tc-bullets li{font-size:14px;line-height:1.7;}
+}
+
 /* ── TABLET 768–1024px ── */
 @media(max-width:1024px){
   :root{--px:32px;}
