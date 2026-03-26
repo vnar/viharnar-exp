@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vihar Nar - Engineering Executive</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#07111f;
+  --navy2:#0d1e33;
+  --navy3:#152844;
+  --gold:#c9a84c;
+  --gold2:#e8c97a;
+  --white:#ffffff;
+  --muted:rgba(255,255,255,0.45);
+  --border:rgba(201,168,76,0.15);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0 80px;position:relative;overflow:hidden;}
+.ring{position:absolute;border-radius:50%;border:1px solid rgba(201,168,76,0.05);pointer-events:none;}
+.r1{width:700px;height:700px;top:-200px;right:-200px;}
+.r2{width:480px;height:480px;top:-80px;right:-80px;}
+.r3{width:260px;height:260px;top:40px;right:40px;}
+.hero-grid{display:grid;grid-template-columns:1fr 460px;gap:56px;align-items:start;padding-top:60px;padding-bottom:60px;max-width:1280px;z-index:1;position:relative;}
+.eyebrow{font-size:11px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;display:flex;align-items:center;gap:12px;}
+.eyebrow::before{content:'';width:28px;height:1px;background:var(--gold);}
+.hero-name{font-family:'Playfair Display',serif;font-size:60px;font-weight:700;line-height:1.05;color:var(--white);margin-bottom:14px;letter-spacing:-1.5px;}
+.hero-title{font-size:15px;color:var(--gold2);margin-bottom:20px;font-weight:400;line-height:1.5;}
+.hero-about{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.8;margin-bottom:28px;max-width:480px;}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:32px;}
+.tag{font-size:10px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;padding:4px 11px;border:1px solid rgba(201,168,76,0.28);border-radius:2px;color:rgba(255,255,255,0.55);background:rgba(201,168,76,0.04);}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.stat{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:3px;padding:14px;}
+.stat-n{font-family:'Playfair Display',serif;font-size:26px;color:var(--gold);line-height:1;margin-bottom:4px;}
+.stat-l{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;}
+.hero-right{display:flex;flex-direction:column;align-items:flex-start;gap:16px;width:100%;}
+.photo-wrap{width:180px;height:180px;border-radius:50%;border:2px solid var(--gold);overflow:hidden;flex-shrink:0;}
+.photo-wrap img{width:100%;height:100%;object-fit:cover;}
+.hero-panel{width:100%;background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:4px;padding:18px 20px;}
+.hero-panel-title{font-size:10px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.hero-bar-item{margin-bottom:11px;}
+.hero-bar-top{display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,0.72);margin-bottom:4px;}
+.hero-bar-yrs{font-size:10px;font-family:'DM Mono',monospace;color:var(--gold);}
+.hero-bar-track{height:3px;background:rgba(255,255,255,0.07);border-radius:2px;overflow:hidden;}
+.hero-bar-fill{height:100%;background:linear-gradient(to right,var(--gold),var(--gold2));border-radius:2px;transform:scaleX(0);transform-origin:left;transition:transform 1.2s cubic-bezier(0.4,0,0.2,1);}
+.hero-bar-fill.on{transform:scaleX(1);}
+.hero-tech-cloud{display:flex;flex-wrap:wrap;gap:6px;}
+.hero-tech-tag{font-size:10px;padding:3px 9px;border:1px solid rgba(255,255,255,0.09);border-radius:2px;color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.02);cursor:default;}
+.hero-tech-tag.h{border-color:rgba(201,168,76,0.32);color:var(--gold);background:rgba(201,168,76,0.07);}
+.scroll-hint{position:absolute;bottom:36px;left:80px;font-size:11px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;display:flex;align-items:center;gap:8px;animation:bob 2s ease-in-out infinite;}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+.scroll-hint span{color:var(--gold);font-size:16px;}
+
+/* SECTION */
+.section{padding:90px 80px;max-width:1360px;margin:0 auto;}
+.sec-eyebrow{font-size:11px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:flex;align-items:center;gap:12px;}
+.sec-eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);}
+.sec-heading{font-family:'Playfair Display',serif;font-size:36px;font-weight:600;color:var(--white);margin-bottom:48px;line-height:1.2;}
+
+/* TIMELINE */
+.tl-legend{display:flex;gap:20px;margin-bottom:36px;flex-wrap:wrap;}
+.tl-legend-item{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--muted);}
+.tl-legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.tl-hint{font-size:11px;color:var(--gold);margin-left:auto;}
+
+.tl-grid{display:grid;grid-template-columns:1fr 40px 1fr;position:relative;}
+
+/* spine */
+.tl-spine-col{display:flex;flex-direction:column;align-items:center;position:relative;}
+.tl-spine-line{position:absolute;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,rgba(201,168,76,0.9),rgba(201,168,76,0.1));left:50%;transform:translateX(-50%);}
+
+.tl-left{padding-right:20px;}
+.tl-right{padding-left:20px;}
+
+/* row = one timeline entry */
+.tl-row-left,.tl-row-right,.tl-row-dot{margin-bottom:32px;}
+
+.tl-dot-wrap{display:flex;justify-content:center;padding-top:16px;}
+.tl-dot{width:13px;height:13px;border-radius:50%;background:var(--navy);border:2px solid var(--gold);position:relative;z-index:1;cursor:pointer;transition:all 0.2s;flex-shrink:0;}
+.tl-dot.cur{background:var(--gold);box-shadow:0 0 0 4px rgba(201,168,76,0.2);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(201,168,76,0.2)}50%{box-shadow:0 0 0 8px rgba(201,168,76,0.07)}}
+.tl-yr{font-size:9px;font-family:'DM Mono',monospace;color:rgba(201,168,76,0.45);margin-top:3px;text-align:center;}
+
+/* card */
+.tl-card{
+  background:rgba(255,255,255,0.025);
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:3px;padding:18px 20px;
+  cursor:pointer;
+  transition:background 0.2s,border-color 0.2s,transform 0.15s;
+  position:relative;
+}
+.tl-card:hover{background:rgba(201,168,76,0.05);border-color:rgba(201,168,76,0.25);transform:translateY(-2px);}
+.tl-card.open{background:rgba(201,168,76,0.06);border-color:rgba(201,168,76,0.3);}
+.tl-card::after{content:'';position:absolute;top:22px;width:20px;height:1px;background:rgba(201,168,76,0.25);}
+.tl-left .tl-card::after{right:-20px;}
+.tl-right .tl-card::after{left:-20px;}
+.tl-empty{background:transparent;border:none;cursor:default;}
+.tl-empty:hover{transform:none;background:transparent;border:none;}
+.tl-empty::after{display:none;}
+
+.tc-company{font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:3px;}
+.tc-role{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:2px;}
+.tc-dates{font-size:10px;font-family:'DM Mono',monospace;color:rgba(255,255,255,0.32);margin-bottom:8px;}
+.tc-summary{font-size:13px;color:rgba(255,255,255,0.58);line-height:1.65;}
+.now-badge{background:var(--gold);color:var(--navy);font-size:8px;padding:2px 5px;border-radius:2px;font-family:'DM Mono',monospace;vertical-align:middle;margin-left:5px;}
+.tc-toggle{font-size:11px;color:var(--gold);margin-top:8px;display:flex;align-items:center;gap:5px;}
+.tc-arrow{display:inline-block;transition:transform 0.2s;}
+.tl-card.open .tc-arrow{transform:rotate(180deg);}
+.tc-details{max-height:0;overflow:hidden;transition:max-height 0.4s ease;}
+.tl-card.open .tc-details{max-height:700px;}
+.tc-details-inner{border-top:1px solid rgba(255,255,255,0.05);margin-top:10px;padding-top:10px;}
+.tc-metrics{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;}
+.tc-met{font-size:10px;font-family:'DM Mono',monospace;background:rgba(201,168,76,0.09);color:var(--gold2);padding:2px 7px;border-radius:2px;border:1px solid rgba(201,168,76,0.18);}
+.tc-bullets{list-style:none;}
+.tc-bullets li{font-size:12px;color:rgba(255,255,255,0.62);line-height:1.6;padding:4px 0 4px 13px;border-bottom:1px solid rgba(255,255,255,0.04);position:relative;}
+.tc-bullets li:last-child{border:none;}
+.tc-bullets li::before{content:'';position:absolute;left:0;top:12px;width:5px;height:1px;background:var(--gold);}
+.tc-bullets b{color:var(--gold2);font-weight:500;}
+
+/* EXPERTISE */
+.exp-section{background:var(--navy2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+.bar-item{margin-bottom:16px;}
+.bar-top{display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,0.75);margin-bottom:5px;}
+.bar-yrs{font-size:11px;font-family:'DM Mono',monospace;color:var(--gold);}
+.bar-track{height:4px;background:rgba(255,255,255,0.07);border-radius:2px;overflow:hidden;}
+.bar-fill{height:100%;background:linear-gradient(to right,var(--gold),var(--gold2));border-radius:2px;transform:scaleX(0);transform-origin:left;transition:transform 1.1s cubic-bezier(0.4,0,0.2,1);}
+.bar-fill.on{transform:scaleX(1);}
+.tech-col-title{font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.tech-cloud{display:flex;flex-wrap:wrap;gap:7px;}
+.tech-tag{font-size:11px;padding:4px 11px;border:1px solid rgba(255,255,255,0.09);border-radius:2px;color:rgba(255,255,255,0.55);background:rgba(255,255,255,0.02);transition:all 0.15s;cursor:default;}
+.tech-tag:hover{border-color:rgba(201,168,76,0.35);color:var(--gold2);}
+.tech-tag.h{border-color:rgba(201,168,76,0.3);color:var(--gold);background:rgba(201,168,76,0.07);}
+
+/* FOOTER */
+.footer{padding:72px 80px;text-align:center;border-top:1px solid var(--border);}
+.footer h2{font-family:'Playfair Display',serif;font-size:34px;font-weight:600;color:var(--white);margin-bottom:10px;}
+.footer p{font-size:14px;color:var(--muted);margin-bottom:24px;}
+.chips{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin-bottom:28px;}
+.chip{font-size:11px;font-weight:500;padding:7px 16px;border:1px solid rgba(201,168,76,0.28);border-radius:2px;color:var(--gold2);background:rgba(201,168,76,0.05);}
+.footer-contact{font-size:13px;color:var(--muted);}
+.footer-contact a{color:var(--gold);text-decoration:none;}
+
+/* FADE IN */
+.fi{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.fi.on{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="ring r1"></div>
+  <div class="ring r2"></div>
+  <div class="ring r3"></div>
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="eyebrow">Engineering Executive</div>
+      <h1 class="hero-name">Vihar<br>Nar</h1>
+      <div class="hero-title">Senior Director / VP &middot; Platform &amp; Software Engineering</div>
+      <p class="hero-about">I build compliant, scalable engineering platforms that accelerate science and protect patients &mdash; across regulated healthcare, precision oncology, and financial infrastructure.</p>
+      <div class="tags">
+        <span class="tag">Workflow Orchestration</span>
+        <span class="tag">Generative AI</span>
+        <span class="tag">FDA / GxP</span>
+        <span class="tag">DevSecOps</span>
+        <span class="tag">Biotech</span>
+        <span class="tag">FinTech</span>
+        <span class="tag">MIT CTO</span>
+      </div>
+      <div class="stats-grid" style="grid-template-columns:repeat(4,1fr);">
+        <div class="stat"><div class="stat-n">20+</div><div class="stat-l">Years</div></div>
+        <div class="stat"><div class="stat-n">55</div><div class="stat-l">Engineers Scaled</div></div>
+        <div class="stat"><div class="stat-n">$38M</div><div class="stat-l">Revenue Platform</div></div>
+        <div class="stat"><div class="stat-n">$8M</div><div class="stat-l">Dept Budget</div></div>
+        <div class="stat"><div class="stat-n">99.99%</div><div class="stat-l">Uptime</div></div>
+        <div class="stat"><div class="stat-n">40+</div><div class="stat-l">Audits Passed</div></div>
+        <div class="stat"><div class="stat-n">92%</div><div class="stat-l">Release-Risk Accuracy</div></div>
+        <div class="stat"><div class="stat-n">40%</div><div class="stat-l">Faster Delivery</div></div>
+      </div>
+      <div style="margin-top:20px;font-size:12px;color:rgba(255,255,255,0.4);display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+        <a href="mailto:vihar.nar@professional.mit.edu" style="color:var(--gold);text-decoration:none;">vihar.nar@professional.mit.edu</a>
+        <span style="color:rgba(255,255,255,0.2);">&middot;</span>
+        <a href="https://linkedin.com/in/viharnar" style="color:var(--gold);text-decoration:none;">linkedin.com/in/viharnar</a>
+        <span style="color:rgba(255,255,255,0.2);">&middot;</span>
+        <span>Boston, MA</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:4px;width:100%;">
+        <div class="photo-wrap">
+          <img src="1774469233662_image.png" alt="Vihar Nar"
+            onerror="this.outerHTML='<div style=\'width:100%;height:100%;background:#152844;display:flex;align-items:center;justify-content:center;font-family:Playfair Display,serif;font-size:44px;color:#c9a84c;\'>VN</div>'">
+        </div>
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:600;color:var(--white);line-height:1.2;">Vihar Nar</div>
+          <div style="font-size:12px;color:var(--gold2);margin-top:4px;line-height:1.5;">Sr Director / VP<br>Platform &amp; Software Engineering</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:6px;">Boston, MA &middot; <a href="https://linkedin.com/in/viharnar" style="color:var(--gold);text-decoration:none;">linkedin.com/in/viharnar</a></div>
+        </div>
+      </div>
+
+      <div class="hero-panel" id="heroBarsPanel">
+        <div class="hero-panel-title">Domain Depth</div>
+        <div id="heroBarsCol"></div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>&#8595;</span> Scroll to explore</div>
+</section>
+
+<!-- TIMELINE -->
+<div style="background:var(--navy);border-top:1px solid var(--border);">
+<div class="section" id="timeline">
+  <div class="sec-eyebrow">Career Journey</div>
+  <div class="sec-heading">Education &amp; Experience</div>
+
+  <div class="tl-legend">
+    <div class="tl-legend-item"><div class="tl-legend-dot" style="background:rgba(201,168,76,0.2);border:2px solid var(--gold);"></div>Education (left)</div>
+    <div class="tl-legend-item"><div class="tl-legend-dot" style="background:rgba(201,168,76,0.2);border:2px solid #e8c97a;"></div>Experience (right)</div>
+    <div class="tl-legend-item"><div class="tl-legend-dot" style="background:var(--gold);"></div>Current role</div>
+    <div class="tl-hint">Click any card to expand</div>
+  </div>
+
+  <div class="tl-grid" id="tlGrid">
+    <div class="tl-left" id="tlLeft"></div>
+    <div class="tl-spine-col" id="tlSpine"><div class="tl-spine-line"></div></div>
+    <div class="tl-right" id="tlRight"></div>
+  </div>
+</div>
+</div>
+
+<!-- TECH STACK -->
+<div style="background:var(--navy2);border-top:1px solid var(--border);">
+<div class="section" id="techstack">
+  <div class="sec-eyebrow">Stack</div>
+  <div class="sec-heading">Technologies &amp; Platforms</div>
+  <div class="tech-cloud" id="techCloud"></div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer" id="contact">
+  <h2>Open to New Opportunities</h2>
+  <p>Senior Director / VP roles in regulated technology</p>
+  <div class="chips">
+    <span class="chip">Biotech / Pharma</span>
+    <span class="chip">FinTech</span>
+    <span class="chip">Regulated Enterprise Tech</span>
+    <span class="chip">Platform Engineering</span>
+    <span class="chip">AI / ML Engineering</span>
+    <span class="chip">Boston Area</span>
+  </div>
+  <div class="footer-contact">
+    <a href="mailto:vihar.nar@professional.mit.edu">vihar.nar@professional.mit.edu</a>
+    &nbsp;&middot;&nbsp;
+    <a href="https://linkedin.com/in/viharnar">linkedin.com/in/viharnar</a>
+    &nbsp;&middot;&nbsp; Boston, MA
+  </div>
+</div>
+
+<script>
+// ── DATA (ASCII only in strings) ──
+var edu = [
+  {
+    role: 'B.E. Electronics & Telecommunications',
+    company: 'University of Mumbai - RAIT',
+    dates: 'Aug 1997 - Aug 2002',
+    year: 1997,
+    summary: 'Bachelor of Engineering - the technical foundation for a 20+ year career in software engineering and platform architecture.',
+    metrics: ['5 years', 'Electronics & Telecom', 'Mumbai'],
+    bullets: [
+      'Electronics engineering, signal processing, and telecommunications.',
+      'Systems thinking and engineering fundamentals underpinning a 20+ year career.'
+    ]
+  },
+  {
+    role: 'Diploma in Software Development & Ethical Hacking',
+    company: 'VMIT',
+    dates: '2002 - 2003',
+    year: 2002.5,
+    summary: 'Specialized diploma in software development and ethical hacking - bridging core engineering with practical software and security skills at the start of a professional career.',
+    metrics: ['Software Development', 'Ethical Hacking', 'Mumbai'],
+    bullets: [
+      'Hands-on training in software development practices and secure coding fundamentals.',
+      'Ethical hacking and security awareness - foundational to a career in regulated, security-conscious engineering environments.'
+    ]
+  },
+  {
+    role: 'CTO Certificate',
+    company: 'MIT Professional Education',
+    dates: 'Feb 2024 - Feb 2025',
+    year: 2024,
+    summary: 'Blended Professional Certificate: Chief Technology Officer. Selective cohort-based program spanning innovation strategy, ML deployment, global data governance, and applied generative AI.',
+    metrics: ['6 modules', 'Impact Project', 'Industry CEOs', 'MIT Faculty'],
+    bullets: [
+      'Leadership & Innovation (Feb-Apr 2024)',
+      'Technology Roadmapping & Development (Apr-Jun 2024)',
+      'Strategy & Portfolio Analysis (Jul-Sep 2024)',
+      'Machine Learning: From Data to Decisions (Sep-Nov 2024)',
+      'Cloud & DevOps: Continuous Transformation (Dec 2024-Feb 2025)',
+      '<b>MIT-mentored Impact Project</b> with faculty and industry CEOs delivering measurable ROI.'
+    ]
+  }
+];
+
+var exp = [
+  {
+    role: 'Software Developer',
+    company: 'Hexlogicals Technologies',
+    dates: 'Aug 2002 - Aug 2003',
+    year: 2002,
+    summary: 'First professional engineering role - feature development, unit testing, and bug resolution. The seed of a 20+ year quality engineering career.',
+    metrics: ['First role', 'Mumbai', 'Feature dev'],
+    bullets: [
+      'Feature development and unit testing across commercial software products.',
+      'Established early habits in code quality and test discipline.'
+    ]
+  },
+  {
+    role: 'Full-stack Developer',
+    company: 'Baysquare Technologies',
+    dates: 'Apr 2003 - Mar 2005',
+    year: 2003,
+    summary: 'Selected to travel internationally to lead the on-site implementation of Baysquare TAP solution in Kuala Lumpur, Malaysia.',
+    metrics: ['Kuala Lumpur', 'TAP solution', 'International deployment'],
+    bullets: [
+      'Led on-site deployment and implementation of Baysquare TAP in Malaysia.',
+      'Full-stack feature development contributing to international rollout architecture.'
+    ]
+  },
+  {
+    role: 'Senior Software Engineer',
+    company: 'Digite',
+    dates: 'Mar 2005 - Nov 2005',
+    year: 2005,
+    summary: 'Worked with Digite\'s senior executive team to deploy and customize the enterprise PM platform for Infosys - one of the world\'s largest IT firms.',
+    metrics: ['Infosys deployment', 'Bangalore', 'Executive stakeholders'],
+    bullets: [
+      'Partnered with senior Infosys stakeholders to configure enterprise-scale delivery workflows.',
+      'Early exposure to executive stakeholder management at global scale.'
+    ]
+  },
+  {
+    role: 'Manager, Project & Quality Engineering',
+    company: 'Capgemini - DTCC Engagement',
+    dates: 'Nov 2005 - Oct 2015',
+    year: 2005.9,
+    summary: 'Led engineering delivery for DTCC\'s flagship post-trade infrastructure platforms - CTM, CMI (Common Messaging Interface), and ALERT. Progressed from Software Engineer to Manager across a decade.',
+    metrics: ['CTM + CMI + ALERT', 'COE Founder', 'Pre-sales', 'Onshore-offshore', '10 years'],
+    bullets: [
+      'Directed cross-functional teams across CTM, CMI, ALERT - regulated global financial infrastructure.',
+      '<b>Founded Capgemini\'s COE</b> for quality engineering and test automation.',
+      '<b>Pre-sales & solution consulting</b> - proposals, client presentations, solution design.',
+      'Built onshore-offshore operating models across Boston and Mumbai.',
+      'Enterprise test automation frameworks improving release stability across post-trade platforms.',
+      '<b>Agile SME</b> - led large-scale digital transformation bridging legacy finance with CI/CD.'
+    ]
+  },
+  {
+    role: 'Manager to Assoc. Director, Quality Engineering',
+    company: 'Foundation Medicine',
+    dates: 'Oct 2015 - Nov 2019',
+    year: 2015,
+    summary: 'Joined FMI as founding Manager of Quality Engineering - initiated a 10-year journey building the enterprise QE capability from scratch. Promoted through Sr Manager and Associate Director.',
+    metrics: ['Founding QE role', 'FDA 21 CFR 820', 'ISO 13485', '3 promotions'],
+    bullets: [
+      'Defined the initial QE operating model, team structure, and test strategy.',
+      'Built CI/CD-integrated quality practices - became standard engineering model across FMI.',
+      'Established audit-ready engineering practices under FDA 21 CFR 820 and ISO 13485.',
+      'Expanded scope to cross-functional governance and enterprise test strategy as Assoc. Director.'
+    ]
+  },
+  {
+    role: 'Director, Quality & Compliance Engineering',
+    company: 'Foundation Medicine',
+    dates: 'Nov 2019 - Feb 2024',
+    year: 2019,
+    summary: 'Led a global quality engineering organization of 35+ engineers (onsite, offshore, FTE) across regulated cloud, mobile, and enterprise platforms.',
+    metrics: ['35+ engineers', '+35% throughput', '-15% budget', '100% compliance', '20+ audits'],
+    bullets: [
+      '<b>+35% delivery throughput</b> and <b>-15% budget</b> optimization.',
+      '100% SDLC compliance - significantly reduced defect escape rates.',
+      '20+ regulatory audits - 100% compliance with zero findings across FDA / ISO 13485 / IEC 62304.',
+      'Dotted-line into QA Dept - QMS process design and procedural governance.'
+    ]
+  },
+  {
+    role: 'Sr Director, Enterprise Quality & Compliance Eng.',
+    company: 'Foundation Medicine',
+    dates: 'Feb 2024 - Aug 2025',
+    year: 2024.1,
+    summary: 'Built and scaled FMI\'s Quality Engineering function from 15 to 55 FTEs (~$8M budget). Strategic enterprise capability spanning QE, SDLC governance, compliance automation, and AI-enabled delivery.',
+    metrics: ['15 to 55 FTEs', '$8M budget', '92% AI prediction', '-90% audit prep', '-10% bugs YoY'],
+    bullets: [
+      '<b>92% release-risk prediction accuracy</b> - AI-powered SDLC intelligence at enterprise scale.',
+      '<b>-90% audit prep effort</b> and <b>+40% release frequency</b> via policy-as-code pipelines.',
+      '<b>Zero regulatory findings</b> across 40+ FDA, ISO 13485, IEC 62304 inspections.',
+      'Built and chaired the <b>SDLC Council</b> - executive governance board.',
+      'Developed proprietary cloud-native compliance apps integrated into CI/CD pipelines.',
+      'Compliance-Ops culture - reduced production bugs 10% YoY while accelerating release velocity.'
+    ]
+  },
+  {
+    role: 'Sr Director, Software Engineering',
+    company: 'Foundation Medicine',
+    dates: 'Sep 2025 - Present',
+    year: 2025.7,
+    current: true,
+    summary: 'Lead software engineering strategy for FMI\'s enterprise workflow orchestration platform - 3 scrum teams (~20 engineers) across order management, lab sample processing, and clinical reporting, supporting ~$38M in annual revenue.',
+    metrics: ['+40% velocity', '~$38M revenue', '99.99% uptime', 'AI policy author', '3 scrum teams'],
+    bullets: [
+      '<b>+40% developer velocity</b> - CI/CD golden paths, reusable templates, automated release controls.',
+      'Defined target-state architecture for workflow orchestration across 3 functional domains.',
+      '<b>Authored Foundation Medicine\'s enterprise AI policy</b> - Roche-aligned governance for responsible AI.',
+      '<b>99.99% uptime</b> through Open Telemetry, Grafana, and risk-based release controls.',
+      'Embedded compliance-by-design: audit logging, evidence capture, FDA / ISO 13485 / IEC 62304 traceability.',
+      'Launched AI-assisted clinical application using Claude for report interpretation and workflow context.'
+    ]
+  }
+];
+
+// ── BUILD TIMELINE ──
+// Merge edu+exp sorted by year, pair into rows
+var allItems = [];
+edu.forEach(function(e){ allItems.push({item:e, side:'left'}); });
+exp.forEach(function(e){ allItems.push({item:e, side:'right'}); });
+allItems.sort(function(a,b){ return b.item.year - a.item.year; });
+
+// pair items into rows: each row has optional left and optional right
+var rows = [];
+allItems.forEach(function(entry){
+  var placed = false;
+  for(var i=0;i<rows.length;i++){
+    var row = rows[i];
+    var hasLeft = row.some(function(r){return r.side==='left';});
+    var hasRight = row.some(function(r){return r.side==='right';});
+    var sameEra = Math.abs(row[0].item.year - entry.item.year) < 1.5;
+    if(sameEra && !((entry.side==='left'&&hasLeft)||(entry.side==='right'&&hasRight))){
+      row.push(entry); placed=true; break;
+    }
+  }
+  if(!placed) rows.push([entry]);
+});
+
+var tlLeft = document.getElementById('tlLeft');
+var tlSpine = document.getElementById('tlSpine');
+var tlRight = document.getElementById('tlRight');
+
+rows.forEach(function(row){
+  var leftEntry = row.find(function(r){return r.side==='left';});
+  var rightEntry = row.find(function(r){return r.side==='right';});
+  var isCurrent = (rightEntry && rightEntry.item.current) || (leftEntry && leftEntry.item.current);
+  var yr = Math.floor((leftEntry||rightEntry).item.year);
+
+  // left cell
+  var ld = document.createElement('div');
+  ld.className = 'tl-row-left';
+  if(leftEntry){
+    ld.innerHTML = buildCard(leftEntry.item);
+  } else {
+    ld.innerHTML = '<div class="tl-card tl-empty" style="min-height:60px;"></div>';
+  }
+  tlLeft.appendChild(ld);
+
+  // spine dot
+  var sd = document.createElement('div');
+  sd.className = 'tl-row-dot';
+  sd.innerHTML = '<div class="tl-dot-wrap"><div class="tl-dot'+(isCurrent?' cur':'')+'"></div><div class="tl-yr">'+yr+'</div></div>';
+  tlSpine.appendChild(sd);
+
+  // right cell
+  var rd = document.createElement('div');
+  rd.className = 'tl-row-right';
+  if(rightEntry){
+    rd.innerHTML = buildCard(rightEntry.item);
+  } else {
+    rd.innerHTML = '<div class="tl-card tl-empty" style="min-height:60px;"></div>';
+  }
+  tlRight.appendChild(rd);
+});
+
+function buildCard(item){
+  var metrics = (item.metrics||[]).map(function(m){return '<span class="tc-met">'+m+'</span>';}).join('');
+  var bullets = (item.bullets||[]).map(function(b){return '<li>'+b+'</li>';}).join('');
+  var nowBadge = item.current ? '<span class="now-badge">NOW</span>' : '';
+  var openClass = item.current ? ' open' : '';
+  return '<div class="tl-card fi'+openClass+'" onclick="toggle(this)">'
+    +'<div class="tc-company">'+item.company+'</div>'
+    +'<div class="tc-role">'+item.role+nowBadge+'</div>'
+    +'<div class="tc-dates">'+item.dates+'</div>'
+    +'<div class="tc-summary">'+item.summary+'</div>'
+    +'<div class="tc-toggle"><span>Details</span><span class="tc-arrow">&#9660;</span></div>'
+    +'<div class="tc-details"><div class="tc-details-inner">'
+    +'<div class="tc-metrics">'+metrics+'</div>'
+    +'<ul class="tc-bullets">'+bullets+'</ul>'
+    +'</div></div>'
+    +'</div>';
+}
+
+function toggle(el){
+  if(!el.classList.contains('tl-empty')) el.classList.toggle('open');
+}
+
+// ── INTERSECTION OBSERVER ──
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting) e.target.classList.add('on');
+  });
+},{threshold:0.08});
+
+document.querySelectorAll('.fi').forEach(function(el){
+  io.observe(el);
+});
+
+// ── HERO BARS ──
+var domains = [
+  {l:'Platform & Software Engineering', y:20, p:100},
+  {l:'Quality Engineering & Compliance', y:18, p:90},
+  {l:'DevSecOps & CI/CD', y:14, p:80},
+  {l:'Org Design & People Leadership', y:12, p:75},
+  {l:'Enterprise Architecture', y:12, p:74},
+  {l:'Regulatory (FDA/GxP/ISO/HIPAA)', y:10, p:70},
+  {l:'AI/ML Enablement & Governance', y:5, p:52},
+  {l:'FinTech / Post-Trade Infrastructure', y:10, p:65},
+  {l:'Cloud & Infrastructure (AWS/Azure)', y:10, p:64},
+  {l:'Executive Governance', y:10, p:68}
+];
+var heroBarsCol = document.getElementById('heroBarsCol');
+domains.forEach(function(d){
+  heroBarsCol.innerHTML += '<div class="hero-bar-item">'
+    +'<div class="hero-bar-top"><span>'+d.l+'</span><span class="hero-bar-yrs">'+d.y+'y</span></div>'
+    +'<div class="hero-bar-track"><div class="hero-bar-fill" style="width:'+d.p+'%"></div></div>'
+    +'</div>';
+});
+
+// animate bars on page load after short delay
+setTimeout(function(){
+  document.querySelectorAll('.hero-bar-fill').forEach(function(f){ f.classList.add('on'); });
+}, 600);
+
+// ── HERO TECH CLOUD ──
+var techs = [
+  {t:'Python',h:1},{t:'Java',h:0},{t:'TypeScript',h:0},{t:'React',h:0},
+  {t:'Node.js',h:0},{t:'Spring Boot',h:0},
+  {t:'AWS',h:1},{t:'Azure',h:0},{t:'Kubernetes',h:1},{t:'Docker',h:0},
+  {t:'Terraform',h:0},{t:'GitHub Actions',h:1},{t:'Jenkins',h:0},
+  {t:'Open Telemetry',h:1},{t:'Grafana',h:1},{t:'Datadog',h:0},{t:'New Relic',h:0},
+  {t:'Playwright',h:0},{t:'Selenium',h:0},{t:'Cypress',h:0},{t:'qTest',h:0},
+  {t:'SonarQube',h:0},{t:'Veracode',h:0},
+  {t:'Veeva QMS',h:0},{t:'ServiceNow',h:0},
+  {t:'Claude / GenAI',h:1},{t:'AI Policy',h:1},{t:'SDLC Intelligence',h:1},
+  {t:'Policy-as-Code',h:1},
+  {t:'FDA 21 CFR 820',h:0},{t:'IEC 62304',h:0},{t:'ISO 13485',h:0},{t:'HIPAA',h:0},{t:'GDPR',h:0},
+  {t:'Agile / SAFe',h:0},{t:'Value Stream Mgmt',h:0},
+  {t:'CTM / ALERT',h:0},{t:'DTCC Platforms',h:0}
+];
+var htc = document.getElementById('techCloud');
+techs.forEach(function(t){
+  htc.innerHTML += '<span class="tech-tag'+(t.h?' h':'')+'">'+t.t+'</span>';
+});
+</script>
+</body>
+</html>
