@@ -86,7 +86,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);
 .tl-dot{width:13px;height:13px;border-radius:50%;background:var(--navy);border:2px solid var(--gold);position:relative;z-index:1;cursor:pointer;transition:all 0.2s;flex-shrink:0;}
 .tl-dot.cur{background:var(--gold);box-shadow:0 0 0 4px rgba(201,168,76,0.2);animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(201,168,76,0.2)}50%{box-shadow:0 0 0 8px rgba(201,168,76,0.07)}}
-.tl-yr{font-size:9px;font-family:'DM Mono',monospace;color:rgba(201,168,76,0.45);margin-top:3px;text-align:center;}
+.tl-yr{font-size:10px;font-family:'DM Mono',monospace;color:rgba(201,168,76,0.45);margin-top:3px;text-align:center;}
 
 /* CARD */
 .tl-card{background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.07);border-radius:4px;padding:16px 18px;cursor:pointer;transition:background 0.2s,border-color 0.2s;position:relative;-webkit-tap-highlight-color:transparent;}
@@ -99,11 +99,23 @@ body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);
 .tl-empty:hover,.tl-empty:active{transform:none;background:transparent;border:none;}
 .tl-empty::after{display:none;}
 .tl-mobile-stack{display:flex;flex-direction:column;gap:12px;}
-.tc-company{font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:3px;}
+.edu-card{
+  /* Slightly different, professional accent for Education cards. */
+  background:rgba(125,211,252,0.045);
+  border-color:rgba(125,211,252,0.22);
+}
+.edu-card::after{
+  background:rgba(125,211,252,0.35);
+}
+.tl-card.edu-card.open{
+  background:rgba(125,211,252,0.075);
+  border-color:rgba(125,211,252,0.45);
+}
+.tc-company{font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:3px;}
 .tc-role{font-family:'Playfair Display',serif;font-size:14px;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:2px;}
-.tc-dates{font-size:10px;font-family:'DM Mono',monospace;color:rgba(255,255,255,0.32);margin-bottom:7px;}
+.tc-dates{font-size:11px;font-family:'DM Mono',monospace;color:rgba(255,255,255,0.32);margin-bottom:7px;}
 .tc-summary{
-  font-size:12.5px;
+  font-size:13px;
   color:rgba(255,255,255,0.58);
   line-height:1.65;
   /* Keep collapsed timeline card heights stable so year dots align with cards. */
@@ -115,16 +127,16 @@ body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);
   min-height:calc(1em * 1.65 * 4);
 }
 .now-badge{background:var(--gold);color:var(--navy);font-size:8px;padding:2px 5px;border-radius:2px;font-family:'DM Mono',monospace;vertical-align:middle;margin-left:5px;}
-.tc-toggle{font-size:11px;color:var(--gold);margin-top:8px;display:flex;align-items:center;gap:5px;min-height:32px;}
+.tc-toggle{font-size:12px;color:var(--gold);margin-top:8px;display:flex;align-items:center;gap:5px;min-height:32px;}
 .tc-arrow{display:inline-block;transition:transform 0.2s;}
 .tl-card.open .tc-arrow{transform:rotate(180deg);}
 .tc-details{max-height:0;overflow:hidden;transition:max-height 0.4s ease;}
 .tl-card.open .tc-details{max-height:800px;}
 .tc-details-inner{border-top:1px solid rgba(255,255,255,0.05);margin-top:10px;padding-top:10px;}
 .tc-metrics{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;}
-.tc-met{font-size:10px;font-family:'DM Mono',monospace;background:rgba(201,168,76,0.09);color:var(--gold2);padding:3px 7px;border-radius:2px;border:1px solid rgba(201,168,76,0.18);}
+.tc-met{font-size:11px;font-family:'DM Mono',monospace;background:rgba(201,168,76,0.09);color:var(--gold2);padding:3px 7px;border-radius:2px;border:1px solid rgba(201,168,76,0.18);}
 .tc-bullets{list-style:none;}
-.tc-bullets li{font-size:12px;color:rgba(255,255,255,0.62);line-height:1.65;padding:5px 0 5px 13px;border-bottom:1px solid rgba(255,255,255,0.04);position:relative;}
+.tc-bullets li{font-size:13px;color:rgba(255,255,255,0.62);line-height:1.65;padding:5px 0 5px 13px;border-bottom:1px solid rgba(255,255,255,0.04);position:relative;}
 .tc-bullets li:last-child{border:none;}
 .tc-bullets li::before{content:'';position:absolute;left:0;top:13px;width:5px;height:1px;background:var(--gold);}
 .tc-bullets b{color:var(--gold2);font-weight:500;}
@@ -222,13 +234,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);
   /* cards touch-friendly */
   .tl-card{padding:14px 16px;}
   .tc-role{font-size:14px;}
-  .tc-summary{font-size:12px;}
+  .tc-summary{font-size:13px;}
   .tc-summary{
     /* Match the same collapsed height across cards on mobile. */
     min-height:calc(1em * 1.65 * 4);
   }
   .tc-toggle{min-height:40px;font-size:12px;}
-  .tc-bullets li{font-size:12px;padding:6px 0 6px 13px;}
+  .tc-bullets li{font-size:13px;padding:6px 0 6px 13px;}
 
   /* expertise: single column */
   .exp-grid{grid-template-columns:1fr;gap:32px;}
@@ -558,12 +570,13 @@ var isMobileTimeline = !!(window.matchMedia && window.matchMedia('(max-width:767
 if(isMobileTimeline){
   // Recruiter-friendly mobile: show a single, clean list (Experience first; Education appears further down).
   var mobileItems = [];
-  exp.forEach(function(e){ mobileItems.push({item:e}); });
-  edu.forEach(function(e){ mobileItems.push({item:e}); });
+  exp.forEach(function(e){ mobileItems.push({item:e, kind:'exp'}); });
+  edu.forEach(function(e){ mobileItems.push({item:e, kind:'edu'}); });
   mobileItems.sort(function(a,b){ return b.item.year - a.item.year; });
 
   mobileItems.forEach(function(entry){
     var item = entry.item;
+    var kind = entry.kind || 'exp';
     var isCurrent = !!item.current;
     var yr = Math.floor(item.year);
 
@@ -576,7 +589,7 @@ if(isMobileTimeline){
 
     var cardCell = document.createElement('div');
     cardCell.className = 'tl-row-mobile-card';
-    cardCell.innerHTML = buildCard(item);
+    cardCell.innerHTML = buildCard(item, kind);
 
     rowEl.appendChild(dotCell);
     rowEl.appendChild(cardCell);
@@ -595,7 +608,7 @@ if(isMobileTimeline){
 
     var leftCell = document.createElement('div');
     leftCell.className = 'tl-row-left tl-left';
-    leftCell.innerHTML = leftEntry ? buildCard(leftEntry.item) : '<div class="tl-card tl-empty"></div>';
+    leftCell.innerHTML = leftEntry ? buildCard(leftEntry.item, 'edu') : '<div class="tl-card tl-empty"></div>';
 
     var dotCell = document.createElement('div');
     dotCell.className = 'tl-row-dot';
@@ -603,7 +616,7 @@ if(isMobileTimeline){
 
     var rightCell = document.createElement('div');
     rightCell.className = 'tl-row-right tl-right';
-    rightCell.innerHTML = rightEntry ? buildCard(rightEntry.item) : '<div class="tl-card tl-empty"></div>';
+    rightCell.innerHTML = rightEntry ? buildCard(rightEntry.item, 'exp') : '<div class="tl-card tl-empty"></div>';
 
     rowEl.appendChild(leftCell);
     rowEl.appendChild(dotCell);
@@ -612,12 +625,13 @@ if(isMobileTimeline){
   });
 }
 
-function buildCard(item){
+function buildCard(item, kind){
   var metrics = (item.metrics||[]).map(function(m){return '<span class="tc-met">'+m+'</span>';}).join('');
   var bullets = (item.bullets||[]).map(function(b){return '<li>'+b+'</li>';}).join('');
   var nowBadge = item.current ? '<span class="now-badge">NOW</span>' : '';
   var openClass = item.current ? ' open' : '';
-  return '<div class="tl-card fi'+openClass+'" onclick="toggle(this)">'
+  var kindClass = (kind === 'edu') ? ' edu-card' : '';
+  return '<div class="tl-card fi'+openClass+kindClass+'" onclick="toggle(this)">'
     +'<div class="tc-company">'+item.company+'</div>'
     +'<div class="tc-role">'+item.role+nowBadge+'</div>'
     +'<div class="tc-dates">'+item.dates+'</div>'
